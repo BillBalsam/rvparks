@@ -1,25 +1,15 @@
-# README
+# RvPark
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An app to connect RV travelers with hosts. Full RV park management as well as crowdsourced locations.
 
-Things you may want to cover:
+## Built With
 
-* Ruby version
+* Ruby on Rails 5.2.3
+* Ruby 2.5.3
+* AWS S3 Storage
 
-* System dependencies
+## Gems
 
-* Configuration
+* [Devise](https://github.com/heartcombo/devise) - User management and authentication
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# rvparks
+## Acknowledgments
