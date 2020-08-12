@@ -3,13 +3,14 @@
         
      
               
-        <form class="booyah-box col-10 offset-1">
-            <%= @places.inspect %>
-            <h1>Enter Your Place Details</h1>
-            <label for="fname">First name:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-            <label for="lname">Last name:</label><br>
-            <input type="text" id="lname" name="lname"><br><br>
+        <form class="booyah-box col-3 offset-0 text-secondary">
+            <h1>Enter RV Park Address</h1>
+            <label for="park_name">Park Name:</label><br>
+            <input type="text" id="park_name" name="park_name"><br>
+            <label for="zip_code">Zip Code:</label><br>
+            <input type="integer" id="zip_code" name="zip_code"><br>
+            <label for="address">Address:</label><br>
+            <input type="text" id="address" name="address"><br><br>
             <input type="submit" value="Submit">
         </form>
     </div>
