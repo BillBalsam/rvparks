@@ -8,11 +8,31 @@
   </div>
 </header>
 <nav id="topNav" class="navbar fixed-top navbar-toggleable-sm">
-    <div class="container">
+    <div class="container navbar">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
             <span>☰</span>
         </button>
-        <a class="navbar-brand page-scroll" href="#first">RvPark</a>
+        <a class="navbar-brand page-scroll" href="#first">RvPark</a>   
+            <ul class="navbar-nav">
+                <div class="container">
+                    <div class="row mx-2")
+                        <% if user_signed_in? %>
+                        <li class="nav-item">
+                            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+                        </li>
+                        <% else %>
+                        <li class="nav-item">
+                            <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
+                        </li>
+                    </div>
+                    <div class="mx-2">
+                        <li class="nav-item">
+                            <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
+                        </li>
+                        <% end %>
+                    </div>
+                </div>
+            </ul>
         <div class="collapse navbar-collapse" id="collapsingNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
