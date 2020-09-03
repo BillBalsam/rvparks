@@ -2,8 +2,11 @@
     <div class="row">
         <div class="col">
             <div class="booyah-box mx-auto my-4" id="host-profile">
-                <h1> <%= @user.email %> </h1>
-                <button class="btn-secondary btn" type="button"> Add New Place </button>
+                <h1> Host </h1>
+                <h3> <%= @host.email %> </h3>
+              
+                <a class="btn btn-secondary" href="/places" role="button">Add New Place</a>
+
             </div>
         </div>
     </div>

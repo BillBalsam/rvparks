@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :hosts
   devise_for :users
-  get '/user' => "profile#index", :as => :user_root
+  # get '/user' => "users#show", :as => :user_root
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'home#index'
   resources :about, only: :index
   resources :profile
   resources :places
   resources :users
-end
+  resources :hosts
+  end
