@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_host!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :authenticate!, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /places
   # GET /places.json
@@ -27,7 +27,7 @@ class PlacesController < ApplicationController
   # POST /places
   # POST /places.json
   def create
-    @place = Place.create(place_params)
+    current_user_type.places.create(place_params)
     redirect_to places_path
   end
 
@@ -60,9 +60,20 @@ class PlacesController < ApplicationController
     def set_place
       @place = Place.find(params[:id])
     end
+    
+    def current_user_type
+      @current_user = user_signed_in? ? current_user : current_host
+    end
+
+    def authenticate!
+      :authenticate_user! || :authenticate_host!
+      current_user_type
+   end
+
+   
 
     # Only allow a list of trusted parameters through
     def place_params
-      params.require(:place).permit(:park_name, :address, :zip_code)
+      params.require(:place).permit(:park_name, :address, :zip_code, :phone)
     end
 end
