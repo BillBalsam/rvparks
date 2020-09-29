@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 2020_09_23_021228) do
     t.datetime "updated_at", null: false
     t.integer "phone"
     t.integer "user_id"
-    t.integer "host_id"
     t.integer "placeable_id"
     t.string "placeable_type"
   end
