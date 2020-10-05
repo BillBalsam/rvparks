@@ -4,6 +4,7 @@
             <div class="booyah-box mx-auto my-4" id="host-profile">
                 <h1> Host </h1>
                 <%= @host.email %>
+                <%= link_to 'Edit Host', edit_host_registration_url, class: 'dropdown-item btn btn-secondary col-1' %>
                 
                 <% @host.places.each do |place| %>
                     <div class="booyah-box">
@@ -23,6 +24,7 @@
                   <% end %>
               
                 <a class="btn btn-secondary" href="/places" role="button">Add New Place</a>
+                
                 
 
             </div>
