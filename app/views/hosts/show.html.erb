@@ -15,6 +15,7 @@
                             <i><%= place.address %></i><br />
                             <p><%= place.zip_code %></p><br />
                             <p><%= place.placeable_id %></p><br />
+                            <p><img src="<%= place.photo %>"></p><br />
                             </td>
                             <td><%= link_to 'Show', place %></td>
                             <td><%= link_to 'Edit', edit_place_path(place) %></td>

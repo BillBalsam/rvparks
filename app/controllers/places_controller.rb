@@ -12,6 +12,7 @@ class PlacesController < ApplicationController
   # GET /places/1.json
   def show
     @place = Place.find(params[:id])
+    @photo = Photo.new
   end
 
   # GET /places/new
@@ -74,6 +75,6 @@ class PlacesController < ApplicationController
 
     # Only allow a list of trusted parameters through
     def place_params
-      params.require(:place).permit(:park_name, :address, :zip_code, :phone)
+      params.require(:place).permit(:park_name, :address, :zip_code, :phone, :photo)
     end
 end

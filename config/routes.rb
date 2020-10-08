@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :about, only: :index
   resources :profile
-  resources :places
+  resources :places do
+    resources :photos
+  end
+  
   resources :users
   resources :hosts
+  
   end
