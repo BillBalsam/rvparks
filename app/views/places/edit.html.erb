@@ -1,6 +1,12 @@
 <h1>Editing Place</h1>
 
-<%= render 'form', place: @place %>
-
+<%= simple_form_for :place do |f| %>
+    <%= f.input :park_name %>
+    <%= f.input :address %>
+    <%= f.input :zip_code %>
+    <%= f.input :phone %>
+    <br />
+    <%= f.submit 'Update', method: :patch, class: 'btn btn-primary' %>
+<% end %>
 <%= link_to 'Show', @place %> |
 <%= link_to 'Back', places_path %>
