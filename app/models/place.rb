@@ -1,5 +1,5 @@
 class Place < ApplicationRecord
-  
+  mount_uploader :photo, PhotoUploader
   belongs_to :placeable, polymorphic: true
   has_many :photos
 
