@@ -8,6 +8,7 @@
             <%= f.input :address %>
             <%= f.input :zip_code %>
             <%= f.input :phone %>
+            <%= f.input :cost %>
             <%= f.file_field :photo %>
             <br />
             <%= f.submit 'Create', class: 'btn btn-primary' %>
@@ -27,10 +28,12 @@
               <h1><%= place.park_name %></h1><br />
               <i><%= place.address %></i><br />
               <p><%= place.zip_code %></p><br />
+              <p><%= number_to_currency place.cost %></p><br />
             </td>
             <td><%= link_to 'Show', place %></td>
             <td><%= link_to 'Edit', edit_place_path(place) %></td>
             <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
           </tr>
         <% end %>
       </tbody>
