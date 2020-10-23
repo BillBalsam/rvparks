@@ -25,12 +25,11 @@
         <% @places.each do |place| %>
           <tr>
             <td>
-              <h1><%= place.park_name %></h1><br />
+              <h1><%= link_to place.park_name, place  %></h1><br />
               <i><%= place.address %></i><br />
               <p><%= place.zip_code %></p><br />
               <p><%= number_to_currency place.cost %></p><br />
             </td>
-            <td><%= link_to 'Show', place %></td>
             <td><%= link_to 'Edit', edit_place_path(place) %></td>
             <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 

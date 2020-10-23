@@ -5,6 +5,9 @@ class ChargesController < ApplicationController
     end
     
     def create
+      @place = Place.find(params[:place_id])
+      @place.charges.create(charge_params)
+      redirect_to place_path(@place)
 
             # Amount in cents
       @amount = (current_place.cost * 100).to_i
@@ -21,16 +24,19 @@ class ChargesController < ApplicationController
         currency: 'usd',
       })
     
+      
+
+
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path
     end
-
-    Charge.create(charge_params)
+  
+    
 
     private
     def charge_params
-        params.require(:charge).permit(:place_id, :user_id)
+        params.require(:charge).permit(:place_id, :placeable_id)
 
     end
 

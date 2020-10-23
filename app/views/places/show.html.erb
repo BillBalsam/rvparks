@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
   <h1><%= @place.park_name %></h1><br />
-  <%= form_tag charges_path do %>
+  <%= form_tag place_charges_path(@place) do %>
+  <%= text_field_tag :placeable_id %>
+  <%= text_field_tag :place_id %>
     <article>
       <% if flash[:error].present? %>
         <div id="error_explanation">
@@ -16,7 +18,7 @@
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
             data-email="<%= current_user.email %>"
-            data-description="<%= @place.park_name (number_to_currency @place.cost) %>"
+            data-description="<%= @place.park_name %>"
             data-amount="<%= (@place.cost * 100).to_i %>"
             data-locale="auto"></script>
   <% end %>
