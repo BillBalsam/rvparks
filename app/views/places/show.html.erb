@@ -2,8 +2,7 @@
 
   <h1><%= @place.park_name %></h1><br />
   <%= form_tag place_charges_path(@place) do %>
-  <%= text_field_tag :placeable_id %>
-  <%= text_field_tag :place_id %>
+  <p><img src="<%= @place.photo %>"></p><br /> 
     <article>
       <% if flash[:error].present? %>
         <div id="error_explanation">

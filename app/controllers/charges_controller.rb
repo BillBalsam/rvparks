@@ -6,7 +6,7 @@ class ChargesController < ApplicationController
     
     def create
       @place = Place.find(params[:place_id])
-      @place.charges.create(charge_params)
+      @place.charges.create({place_id: @place, placeable_id: @place.placeable_id})
       redirect_to place_path(@place)
 
             # Amount in cents
