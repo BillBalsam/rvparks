@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :about, only: :index
   resources :profile
   resources :places do
+    resources :charges
     resources :photos
   end
   

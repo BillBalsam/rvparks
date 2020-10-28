@@ -3,41 +3,35 @@
     <p id="notice"><%= notice %></p>
 
     <h1>Parks</h1>
-    <%= simple_form_for :place do |f| %>
-            <%= f.input :park_name %>
-            <%= f.input :address %>
-            <%= f.input :zip_code %>
-            <%= f.input :phone %>
-            <%= f.file_field :photo %>
-            <br />
-            <%= f.submit 'Create', class: 'btn btn-primary' %>
-        <% end %>
-
-    <table>
-      <thead>
+    </li>
+    
+    <% if user_signed_in? %>
+      <% @places.each do |place| %>
         <tr>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+          <td>
+            <h1><%= link_to place.park_name, place  %></h1><br />
+            <p><img src="<%= place.photo %>"></p><br /> 
+            <i><%= place.address %></i><br />
+            <p><%= place.zip_code %></p><br />
+            <p><%= number_to_currency place.cost %></p><br />
+        </td>
 
-      <tbody>
-        <% @places.each do |place| %>
-          <tr>
-            <td>
-              <h1><%= place.park_name %></h1><br />
-              <i><%= place.address %></i><br />
-              <p><%= place.zip_code %></p><br />
-            </td>
-            <td><%= link_to 'Show', place %></td>
-            <td><%= link_to 'Edit', edit_place_path(place) %></td>
-            <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+      <% end %>
+    <% elsif host_signed_in? %>
+      <%= simple_form_for :place do |f| %>
+        <%= f.input :park_name %>
+        <%= f.input :address %>
+        <%= f.input :zip_code %>
+        <%= f.input :phone %>
+        <%= f.input :cost %>
+        <%= f.file_field :photo %>
+        <br />
+        <%= f.submit 'Create', class: 'btn btn-primary' %>
+    <% end %>
 
-    <br>
+    <% end %>
+ 
 
-    <%= link_to 'New Place', new_place_path %>
-  </div>
-</div>
+
+    
+
