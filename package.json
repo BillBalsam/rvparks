@@ -1,5 +1,9 @@
 {
   "name": "rv_parks",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@fullcalendar/core": "^5.3.1",
+    "@fullcalendar/daygrid": "^5.3.2",
+    "moment": "^2.29.1"
+  }
 }

@@ -13,7 +13,12 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require calendar
 //= require_tree .
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+
+$('h1').click(function() {
+    alert("message");
+  });

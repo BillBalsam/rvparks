@@ -2,7 +2,7 @@
 
   <h1><%= @place.park_name %></h1><br />
   <%= form_tag place_charges_path(@place) do %>
-  <p><img src="<%= @place.photo %>"></p><br /> 
+  <div class="picture"><p><img src="<%= @place.photo %>"></p><br /> </div>
     <article>
       <% if flash[:error].present? %>
         <div id="error_explanation">
@@ -13,7 +13,7 @@
         <span>Amount: <%=number_to_currency @place.cost %></span>
       </label>
     </article>
-  
+    <div id="calendar"></div>
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
             data-email="<%= current_user.email %>"
@@ -24,3 +24,5 @@
       
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>
+
+
