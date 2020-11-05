@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @booking.name %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @booking.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @booking.end_time %>
+</p>
+
+<%= month_calendar events: @bookings do |date, bookings| %>
+  <%= date %>
+
+  <% bookings.each do |booking| %>
+    <div>
+      <%= booking.name %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= month_calendar do |date| %>
+  <%= date %>
+<% end %>
+
+
+<%= link_to 'Edit', edit_booking_path(@booking) %> |
+<%= link_to 'Back', bookings_path %>
+
+

@@ -13,6 +13,7 @@
         <span>Amount: <%=number_to_currency @place.cost %></span>
       </label>
     </article>
+
   
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -21,6 +22,22 @@
             data-amount="<%= (@place.cost * 100).to_i %>"
             data-locale="auto"></script>
   <% end %>
-      
+  
+  <%= simple_form_for @booking, url: place_bookings_path do |f| %>
+
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.input :start_time %>
+      <%= f.input :end_time %>
+      <%= f.input :placeable_id %>
+      <%= f.input :user_id %>
+      <%= f.input :place_id %>
+    </div>
+  
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>

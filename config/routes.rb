@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   devise_for :hosts
   devise_for :users
   # get '/user' => "users#show", :as => :user_root
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
   resources :places do
     resources :charges
     resources :photos
+    resources :bookings
+    
   end
   
   resources :users

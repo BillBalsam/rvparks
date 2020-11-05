@@ -3,6 +3,7 @@ class Place < ApplicationRecord
   belongs_to :placeable, polymorphic: true
   has_many :photos
   has_many :charges
+  has_many :bookings
 
   validates :park_name, presence: true, length: { minimum: 3}
   validates :address, presence: true
