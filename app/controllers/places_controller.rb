@@ -12,6 +12,8 @@ class PlacesController < ApplicationController
   # GET /places/1.json
   def show
     @place = Place.find(params[:id])
+    @booking = Booking.find_by(id: @place.booking)
+    @bookings = Booking.where(place_id: @place)
     @photo = Photo.new
   end
 

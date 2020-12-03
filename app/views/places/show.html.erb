@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
   <h1><%= @place.park_name %></h1><br />
+  
   <%= form_tag place_charges_path(@place) do %>
   <p><img src="<%= @place.photo %>"></p><br /> 
     <article>
@@ -23,21 +24,22 @@
             data-locale="auto"></script>
   <% end %>
   
-  <%= simple_form_for @booking, url: place_bookings_path do |f| %>
 
-    <div class="form-inputs">
-      <%= f.input :name %>
-      <%= f.input :start_time %>
-      <%= f.input :end_time %>
-      <%= f.input :placeable_id %>
-      <%= f.input :user_id %>
-      <%= f.input :place_id %>
-    </div>
   
-    <div class="form-actions">
-      <%= f.button :submit %>
-    </div>
+
+  <%= month_calendar events: @bookings do |date, bookings| %>
+    <%= date %>
+    <% bookings.each do |booking| %>
+      <div>
+        <%= booking.name %>
+      </div>
+    <% end %>
   <% end %>
+  
+  
+
+
+
 
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>
