@@ -23,9 +23,16 @@
             data-amount="<%= (@place.cost * 100).to_i %>"
             data-locale="auto"></script>
   <% end %>
+
+
+  <td><%= button_to '<' ,{:controller => 'bookings', 
+                          :action => 'create', 
+                          :place_id => 21,
+                          booking_params{:name => 'new years', :start_time => '2021-01-01', :end_time => '2021-01-02'} {:method => :post} %>
+  </td>
   
 
-  
+
 
   <%= month_calendar events: @bookings do |date, bookings| %>
     <%= date %>
