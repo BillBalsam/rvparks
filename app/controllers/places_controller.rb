@@ -12,6 +12,8 @@ class PlacesController < ApplicationController
   # GET /places/1.json
   def show
     @place = Place.find(params[:id])
+    @booking = Booking.find_by(id: @place.booking)
+    @bookings = Booking.find_by_sql ['SELECT start_time, end_time, name FROM bookings WHERE place_id = ?', @place]
     @photo = Photo.new
   end
 
@@ -27,6 +29,7 @@ class PlacesController < ApplicationController
 
   # POST /places
   # POST /places.json
+  # On create assign available to all dates for bookings
   def create
     current_user_type.places.create(place_params)
     redirect_to places_path

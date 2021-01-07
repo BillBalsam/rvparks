@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
   <h1><%= @place.park_name %></h1><br />
+  
   <%= form_tag place_charges_path(@place) do %>
   <p><img src="<%= @place.photo %>"></p><br /> 
     <article>
@@ -13,6 +14,7 @@
         <span>Amount: <%=number_to_currency @place.cost %></span>
       </label>
     </article>
+
   
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -21,6 +23,44 @@
             data-amount="<%= (@place.cost * 100).to_i %>"
             data-locale="auto"></script>
   <% end %>
-      
+
+
+ 
+<% if @place.bookings.present? %>  
+
+  <%= simple_form_for @bookings, url: place_bookings_path(@place), method: :post  do |f| %>
+    <%= f.input :name %>
+    <%= f.input :start_time %>
+    <%= f.input :end_time %>
+    <%= f.hidden_field :place_id, value: @place %>
+    <%= f.hidden_field :placeable_id, value: @place.placeable_id %>
+    <%= f.hidden_field :user_id, value: current_user.email %>
+    <%= f.submit 'Create', class: 'btn btn-primary' %>
+  <% end %>  
+
+
+ <%= month_calendar events: @bookings do |date, bookings| %>
+    <%= date %>
+    <% bookings.each do |booking| %>
+      <div>
+        <%= booking.name %>
+      </div>
+    <% end %>
+  <% end %> 
+
+
+<% else %>
+
+  <%= month_calendar do %>
+    
+  <% end %> 
+ 
+<% end %>   
+
+  
+
+
+
+
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>
