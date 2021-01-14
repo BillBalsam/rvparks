@@ -32,7 +32,16 @@ class PlacesController < ApplicationController
   # On create assign available to all dates for bookings
   def create
     current_user_type.places.create(place_params)
-    redirect_to places_path
+    redirect_to place_path(Place.last.id)
+    Place.last.bookings.create(
+      :name => "New Place Created",
+      :start_time => Date.today.strftime("%Y-%m-%d"),
+      :end_time => Date.today.strftime("%Y-%m-%d"),
+      :place_id => Place.last.id,
+      :placeable_id => current_host.id,
+      :user_id => current_host.email
+    )
+
   end
 
   # PATCH/PUT /places/1
