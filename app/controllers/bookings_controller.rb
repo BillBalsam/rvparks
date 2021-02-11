@@ -28,14 +28,16 @@ class BookingsController < ApplicationController
   def create
     @place = Place.find(params[:place_id])
     @booking = @place.bookings.create(booking_params)
-    respond_to do |format|
+
       if @booking.save
-        format.html { redirect_to place_path(@place), notice: 'Booking was successfully created.' }
-        format.json { render :show, status: :created, location: @booking }
+        redirect_to place_path(@place), notice: 'Booking was successfully created.' 
+    
       else
-        format.html { redirect_to place_path(@place), alert: @booking.errors.messages[0] }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
-      end
+        # format.html { redirect_to place_path(@place), alert: @booking.errors.full_messages[0] }
+        # format.json { render json: @booking.errors, status: :unprocessable_entity }
+        flash[:errors] = @booking.errors.full_messages
+        redirect_to place_path(@place)
+
     end
   end
 
