@@ -10,7 +10,11 @@
   </head>
 
   <body>
+
+
+
     <%= render "layouts/navbar" %>
+
     <%= yield %>
     <%= render "layouts/footer" %>
     <% if notice.present? %>
@@ -19,12 +23,7 @@
     <% if alert.present? %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-    
-    <% flash.each do |key, value| %>
-      <div class="<%= flash_class(key) %>">
-            <%= value %>
-      </div>
-    <% end %>
+
     
   </body>
 </html>

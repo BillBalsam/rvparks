@@ -1,24 +1,17 @@
 class Booking < ApplicationRecord
     belongs_to :place
-    validates :name, presence: { message: "Name can't be blank"}
+    validates :name, presence: { message: "can't be blank"}
     
 
-    validate do |comment| 
-        comment.validate_other_booking_overlap
-    end
+    validate :validate_other_booking_overlap
 
-    def period
-        start_time..end_time
-    end
 
-    
+    private
 
     def validate_other_booking_overlap
-        other_bookings = Booking.all
-        is_overlapping = other_bookings.any? do |other_booking|
-            period.overlaps?(other_booking.period)
-        end
-        errors.add(:base, 'Please check booking, dates cannot overlap') if is_overlapping
-
+        sql = ":end_time >= start_time and end_time >= :start_time and place_id = :place_id"
+        is_overlapping = Booking.where(sql, start_time: start_time, end_time: end_time, place_id: place_id).exists?
+        errors.add(:base, "Dates can't overlap") if is_overlapping
     end
 end
+

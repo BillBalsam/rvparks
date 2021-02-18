@@ -1,8 +1,12 @@
-<% flash.each do |type, msg| %>
-  <div class="alert alert-danger">
-    <%= msg %>
+<% if !!flash[:errors] %>
+  <div class='alert alert-danger'>
+    <% flash[:errors].each do |message| %>
+      <li> <%= message %> </li>
+    <% end %>
   </div>
 <% end %>
+
+<p id="notice"><%= notice %></p>
 
   <h1><%= @place.park_name %></h1><br />
   
@@ -31,7 +35,7 @@
 
 
   <%= simple_form_for @bookings, url: place_bookings_path(@place), method: :post  do |f| %>
-    <%= f.input :name, :required => true, class: "booking-name-form" %>
+    <%= f.input :name %>
     <%= f.input :start_time %>
     <%= f.input :end_time %>
     <%= f.hidden_field :place_id, value: @place %>
@@ -49,7 +53,6 @@
       </div>
     <% end %>
   <% end %> 
-
 
 
 
