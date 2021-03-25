@@ -1,12 +1,6 @@
-<% if !!flash[:errors] %>
-  <div class='alert alert-danger'>
-    <% flash[:errors].each do |message| %>
-      <li> <%= message %> </li>
-    <% end %>
-  </div>
-<% end %>
-
 <p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
+
 
   <h1><%= @place.park_name %></h1><br />
   

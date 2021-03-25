@@ -27,20 +27,22 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @place = Place.find(params[:place_id])
-    @place.bookings.create(booking_params)
-    redirect_to place_path(@place)
+    existing_bookings = Booking.count
+    @booking = @place.bookings.create(booking_params)
+    # redirect_to place_path(@place)
+    
 
     
     
-    # respond_to do |format|
-    #   if @booking.save
-    #     format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
-    #     format.json { render :show, status: :created, location: @booking }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @booking.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if Booking.count == existing_bookings + 1
+        format.html { redirect_to place_path(@place), notice: 'Booking was successfully created.' }
+        format.json { render :show, status: :created, location: @booking }
+      else
+        format.html { redirect_to place_path(@place), alert: @booking.errors.full_messages[0] }
+        # format.json { render json: @booking.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /bookings/1
