@@ -1,3 +1,29 @@
 // Place all the styles related to the hosts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+ .profile-icon {
+     height: 300px;
+     width: 400px;
+     background-color: red;
+     margin: 10px;
+     float: left;
+     border-radius: 5px;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     overflow: scroll;
+
+ }
+
+ .host-profile {
+    background-color: rgb(211, 200, 211);
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    height: 80%;
+    width: 70%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+ }

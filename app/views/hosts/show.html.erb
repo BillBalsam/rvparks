@@ -1,11 +1,7 @@
 <div class="background"> 
-    <div class="row">
-        <div class="col">
-            <div class="booyah-box mx-auto my-4" id="host-profile">
-                <h1> Host </h1>
-                <%= @host.email %>
-                <%= link_to 'Edit Host', edit_host_registration_url, class: 'dropdown-item btn btn-secondary col-1' %>
-                
+    <div class="host-profile container" id="host-profile">
+        <div class="row">
+            <div class="profile-icon col-md">
                 <% @host.places.each do |place| %>
                     <div class="booyah-box">
 
@@ -22,12 +18,13 @@
                             <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                         </tr>
                     </div>
-                  <% end %>
-              
-                <a class="btn btn-secondary" href="/places" role="button">Add New Place</a>
-                
-                
-
+                    <% end %>
+            </div>
+            <div class="profile-icon col-md">
+            </div>
+            <div class="profile-icon col-md">
+            </div>
+            <div class="profile-icon col-md">
             </div>
         </div>
     </div>
