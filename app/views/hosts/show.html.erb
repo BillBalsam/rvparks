@@ -1,7 +1,7 @@
 <div class="background"> 
     <div class="host-profile container" id="host-profile">
         <div class="row">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
 
                 <div class="carousel-inner">
 
@@ -38,6 +38,39 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+
+        
+
+
+                <div class="card" style="width: 18rem;">
+
+                    <img src="/images/campground.jpg" class="card-img-top" alt="No Image Available">
+                    <%= simple_form_for @host do |f| %>
+                        <%= f.file_field :photo %>
+                        <br />
+                        <%= f.submit 'Upload Image', class: 'btn btn-primary' %>
+                    <% end %>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= link_to root_path %></h5>
+                        <p class="card-text"></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"> A first item </li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+
+
+
+
+
+            
         </div>
     </div>
 </div>
+
