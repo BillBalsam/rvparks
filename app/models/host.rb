@@ -1,8 +1,9 @@
 class Host < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  has_many :photos, :places, as: :placeable
+  has_many :places, as: :placeable
 end
